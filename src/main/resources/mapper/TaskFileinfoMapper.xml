@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.myshop.dao.TaskFileinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.hw.myshop.domain.po.TaskFileinfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="file_url" property="fileUrl" jdbcType="VARCHAR" />
+    <result column="file_stype" property="fileStype" jdbcType="INTEGER" />
+    <result column="file_name" property="fileName" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="BIGINT" />
+    <result column="size" property="size" jdbcType="DECIMAL" />
+    <result column="file_type" property="fileType" jdbcType="VARCHAR" />
+    <result column="valid" property="valid" jdbcType="CHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="creater" property="creater" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="updater" property="updater" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, file_url, file_stype, file_name, pid, size, file_type, valid, create_time, creater, 
+    update_time, updater
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from task_fileinfo
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from task_fileinfo
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hw.myshop.domain.po.TaskFileinfo" >
+    insert into task_fileinfo (id, file_url, file_stype, 
+      file_name, pid, size, 
+      file_type, valid, create_time, 
+      creater, update_time, updater
+      )
+    values (#{id,jdbcType=BIGINT}, #{fileUrl,jdbcType=VARCHAR}, #{fileStype,jdbcType=INTEGER}, 
+      #{fileName,jdbcType=VARCHAR}, #{pid,jdbcType=BIGINT}, #{size,jdbcType=DECIMAL}, 
+      #{fileType,jdbcType=VARCHAR}, #{valid,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{creater,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{updater,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hw.myshop.domain.po.TaskFileinfo" >
+    insert into task_fileinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="fileUrl != null" >
+        file_url,
+      </if>
+      <if test="fileStype != null" >
+        file_stype,
+      </if>
+      <if test="fileName != null" >
+        file_name,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="size != null" >
+        size,
+      </if>
+      <if test="fileType != null" >
+        file_type,
+      </if>
+      <if test="valid != null" >
+        valid,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="creater != null" >
+        creater,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updater != null" >
+        updater,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="fileUrl != null" >
+        #{fileUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="fileStype != null" >
+        #{fileStype,jdbcType=INTEGER},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=BIGINT},
+      </if>
+      <if test="size != null" >
+        #{size,jdbcType=DECIMAL},
+      </if>
+      <if test="fileType != null" >
+        #{fileType,jdbcType=VARCHAR},
+      </if>
+      <if test="valid != null" >
+        #{valid,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creater != null" >
+        #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updater != null" >
+        #{updater,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hw.myshop.domain.po.TaskFileinfo" >
+    update task_fileinfo
+    <set >
+      <if test="fileUrl != null" >
+        file_url = #{fileUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="fileStype != null" >
+        file_stype = #{fileStype,jdbcType=INTEGER},
+      </if>
+      <if test="fileName != null" >
+        file_name = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=BIGINT},
+      </if>
+      <if test="size != null" >
+        size = #{size,jdbcType=DECIMAL},
+      </if>
+      <if test="fileType != null" >
+        file_type = #{fileType,jdbcType=VARCHAR},
+      </if>
+      <if test="valid != null" >
+        valid = #{valid,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creater != null" >
+        creater = #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updater != null" >
+        updater = #{updater,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hw.myshop.domain.po.TaskFileinfo" >
+    update task_fileinfo
+    set file_url = #{fileUrl,jdbcType=VARCHAR},
+      file_stype = #{fileStype,jdbcType=INTEGER},
+      file_name = #{fileName,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=BIGINT},
+      size = #{size,jdbcType=DECIMAL},
+      file_type = #{fileType,jdbcType=VARCHAR},
+      valid = #{valid,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      creater = #{creater,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      updater = #{updater,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
