@@ -45,13 +45,13 @@ public class UserServiceImpl implements UserService {
     public void highConcurrencyUpdate() {
         try {
             List<Integer> integers = new ArrayList();
-            for (int i=1;i<=500;i++){
+            for (int i=1;i<=100000;i++){
                 integers.add(i);
             }
 
             //分割
             int listStart,listEnd;
-            int groupSize = 5;
+            int groupSize = 1;
             int groupNum;
             if (integers.size() < groupSize){
                 groupNum = 1;
@@ -102,8 +102,10 @@ public class UserServiceImpl implements UserService {
                         user.setName(newName);
                         user.setOldName(originName);
 //                        updateNameById(user);
-                        userMapper.updateNameById(user);
-                        break;
+                        int i =userMapper.updateNameById(user);
+                        if (i>0){
+                            break;
+                        }
                     }catch (Exception e){
                         log.error("异常：{}",e);
                         Thread.sleep(50);
